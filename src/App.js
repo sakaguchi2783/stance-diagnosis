@@ -10,6 +10,7 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
+import './App.css';
 
 ChartJS.register(
   RadialLinearScale,
@@ -204,9 +205,14 @@ const questionsData = [
 ];
 
 function App() {
+  const [showHome, setShowHome] = useState(true);
   const [questions] = useState(questionsData);  // setQuestionsは削除
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState({ エース: 0, バランサー: 0, パワー: 0, フレックス: 0 });
+
+  const startQuiz = () => {
+    setShowHome(false);
+  };
 
   const handleAnswer = (type) => {
     setAnswers((prev) => ({ ...prev, [type]: prev[type] + 1 }));
@@ -218,12 +224,25 @@ function App() {
   };
 
   return (
-    <div>
-      {questions.length > 0 && currentQuestion < questions.length ? (
+    <div className="container">
+      {showHome ? (
+        <Home onStart={startQuiz} />
+      ) : questions.length > 0 && currentQuestion < questions.length ? (
         <Question question={questions[currentQuestion]} onAnswer={handleAnswer} />
       ) : (
         <Results results={answers} />
       )}
+    </div>
+  );
+}
+
+function Home({ onStart }) {
+  return (
+    <div id="home">
+      <img src="/path/to/スタイル4ロゴサブ - コピー.png" alt="スタイル4ロゴ" />
+      <h1>スタイル４</h1>
+      <p>あなたはどのタイプ？</p>
+      <button onClick={onStart}>タイプ診断スタート</button>
     </div>
   );
 }
@@ -260,7 +279,7 @@ function Results({ results }) {
   return (
     <div>
       <h2>診断結果</h2>
-      <div style={{ width: '300px', height: '300px' }}>
+      <div style={{ width: '300px', height: '300px', margin: '0 auto' }}>
         <Radar data={data} />
       </div>
       <h3>あなたは{maxType}タイプです</h3>

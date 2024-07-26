@@ -1,43 +1,45 @@
-.App {
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+h2, h3 {
+  font-size: 1.5rem;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+button {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
   color: white;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+button:hover {
+  background-color: #0056b3;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#home img {
+  width: 150px;
+  display: block;
+  margin: 0 auto;
 }
 
-img {
-  width: 50px;
-  height: 50px;
+#home h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin: 20px 0;
+}
+
+#home p {
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.container {
+  padding: 20px;
 }
